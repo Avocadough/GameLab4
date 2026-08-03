@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5y568p25r7rl"]
 
-[ext_resource type="Texture2D" uid="uid://dsqhpet4dfpn8" path="res://Assets/Spritesheet/bullet.png" id="1_pkqe3"]
+[ext_resource type="Texture2D" path="res://Assets/Spritesheet/crystal_bolt.svg" id="1_pkqe3"]
 [ext_resource type="Script" uid="uid://lfkiq2j22hff" path="res://Scenes/Prefabs/bullet.gd" id="1_yovq8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pkqe3"]

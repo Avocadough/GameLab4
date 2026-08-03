@@ -56,7 +56,9 @@ func death():
 		await player.death_tween()
 	life -= 1
 	if life <= 0:
-		get_tree().change_scene_to_file("res://Scenes/Levels/game_over.tscn")	
+		get_tree().change_scene_to_file("res://Scenes/Levels/game_over.tscn")
+	else:
+		hp = max_hp
 
 func save_option():
 	var file = FileAccess.open("user://option.json", FileAccess.WRITE)

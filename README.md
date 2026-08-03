@@ -1,91 +1,75 @@
-# 2D Platformer Starter Kit
+# Crystal Courier: Skyline Run
 
-This starter kit provides all the essential mechanics needed to build a complete 2D platformer game in Godot 4.7. It is designed as a hands-on learning resource for students taking the **Computer Game Development** course at the **College of Computing, Khon Kaen University**.
+โครงงานแบบฝึกหัดที่ 4 วิชา Computer Game Development: เกม 2D Platform Side-Scrolling ที่สร้างด้วย Godot 4.7
 
-## Preview
+## ข้อมูลนักศึกษา
 
-<img src="docs/qrcode.png" style="width:300px;" />
+- รหัสนักศึกษา: ____________________
+- ชื่อ-สกุล: _______________________
 
-- [Game Preview](https://computingkku.github.io/2D-Platformer-Starter-Kit/)
+## Game Story
 
+ผลึกพลังงานของเมืองลอยฟ้ากระจัดกระจายไปตาม 4 เขต ผู้เล่นรับบทเป็น Courier รุ่นใหม่ที่ต้องเก็บผลึก ฝ่ากับดัก กำจัดมอนสเตอร์ และเปิดประตูพลังงานเพื่อเชื่อมเส้นทางของเมืองกลับคืนมา
 
-## Features
+## วิธีเล่น
 
-- **Game Menu** — A simple main menu scene (`Menu.tscn`) with Start and Exit options, so players can launch into the game or quit cleanly.
-- **Mobile & Web Design** — On-screen touch controls are included, allowing the game to be played on phones, tablets, and browsers without a keyboard.
-- **Platformer Controller** — Responsive horizontal movement and jumping with double jump support, configurable directly from the Godot Inspector.
-- **Weapon System** — Shoot fireball projectiles with physics-based bouncing and a configurable lifetime. Bullets can defeat enemies and add to the player's score.
-- **Enemy AI** — Enemies patrol the level, reverse direction on walls, and detect the player using raycasting. They can be defeated with bullets.
-- **Enemy Spawner** — A reusable spawner that generates enemies over time with configurable speed, respawn delay, and maximum instance limits.
-- **Animated Player** — Idle, walk, jump, and attack animations driven by state logic; sprite flips automatically based on movement direction.
-- **Particle Effects** — Running particle trails, death particles, and damage feedback (red flash) for juicier game feel.
-- **Damage & Health System** — Player takes damage on enemy contact with knockback and temporary invincibility frames. HP bar and life count are displayed in the UI.
-- **Save & Load** — Save and load game progress (position, score, lives, and settings) using JSON files.
-- **Sound & Music Toggle** — Persistent audio settings saved to a config file, with on-screen mute/unmute buttons.
-- **Score System** — Collect coins or defeat enemies to increase your score; UI updates in real time through the game manager.
-- **Demo Levels** — Two hand-crafted levels that introduce platformer design patterns and progressively challenge the player.
-- **Level Management** — Clean scene transitions between levels using an autoload transition manager.
-- **Beginner-Friendly Code** — Every script is documented and structured to be easy to read, modify, and extend.
+| ปุ่ม | การทำงาน |
+|---|---|
+| A / D หรือ ← / → | เดินซ้าย-ขวา |
+| Space / W / ↑ | กระโดดและกระโดดสองชั้น |
+| X | ยิง Crystal Bolt |
+| ปุ่มบนหน้าจอ | รองรับการควบคุมแบบสัมผัส |
 
-## Getting Started
+เก็บผลึกเพื่อเพิ่มคะแนน เก็บยาเพื่อฟื้น HP หลีกเลี่ยงกับดักและศัตรู แล้วเข้าประตูท้ายด่านเพื่อไปยังด่านถัดไป
 
-1. Open the project in [Godot 4.7](https://godotengine.org/) or later.
-2. Press **F5** or click **Play** to run the main menu.
-3. Use **A/D** or **Left/Right** to move, **Space** to jump, and **X** to shoot.
-4. On mobile or web, use the on-screen buttons at the bottom of the screen.
-5. Collect coins, defeat enemies, avoid traps, and reach the door to finish each level.
+## สิ่งที่ทำในขั้นตอน 1-9
 
-## Project Structure
+1. สร้างโปรเจกต์ `GameLab4` และปรับ README พร้อมเรื่องราวเกม
+2. ใช้ตัวละครนักเรียนแบบมี Animation และศัตรู 2 ชนิด: Mushroom กับ Slime
+3. ใช้คทาเป็นอาวุธและเปลี่ยนกระสุนเป็น Crystal Bolt
+4. ใช้กับดักใบเลื่อยและหอก พร้อมวัตถุประกอบฉาก
+5. เพิ่ม Crystal สำหรับคะแนนและ Heal Potion สำหรับฟื้นพลังชีวิต
+6. ออกแบบ `level_01` ถึง `level_04` ด้วย TileMapLayer ขนาด 64x64 และ TileSet ที่มี Collision Polygon
+7. ใช้ Parallax2D สองชั้น พร้อมฉากภูเขาและเมฆที่ต่างกันในแต่ละด่าน
+8. ปรับฉาก Game Over และ Win Game พร้อมภาพ ข้อความ และเสียง
+9. เปลี่ยนเพลงเป็น `crystal_route.wav` ที่สร้างใหม่ และเพิ่มเสียงเอฟเฟกต์กระโดด เก็บไอเท็ม บาดเจ็บ เกิดใหม่ และผ่านด่าน
 
-```
-Scenes/
-├── Actors/           # Player, enemies, and spawners
-├── Levels/           # Level scenes, base level template, and UI
-├── Managers/         # GameManager, SceneTransition, AudioManager
-└── Prefabs/          # Reusable objects (bullet, coin, potion, door, button)
+## เปิดโปรเจกต์
 
-Assets/
-├── Fonts/            # Custom fonts
-├── Icons/            # UI icons
-├── Sound/            # BGM and SFX
-├── Spritesheet/      # Character and tile sprites
-└── Textures/         # Particle and effect textures
+1. เปิด Godot 4.7.1 หรือใหม่กว่า
+2. Import ไฟล์ `project.godot`
+3. กด F5 เพื่อเริ่มจากเมนูหลัก
+
+ตรวจโครงสร้างโปรเจกต์แบบอัตโนมัติได้ด้วย:
+
+```powershell
+..\Godot_v4.7.1-stable_win64_console.exe --headless --path . --scene res://scripts/validate_project.tscn
 ```
 
-## Controls
+## ตัวอย่างหน้าจอ
 
-| Input | Action |
-|-------|--------|
-| A / Left Arrow | Move left |
-| D / Right Arrow | Move right |
-| Space / S | Jump |
-| X | Shoot |
-| On-screen buttons | Mobile and web touch controls |
+<img src="docs/demo1.jpg" width="480" alt="Crystal Courier level 1">
+<img src="docs/demo2.jpg" width="480" alt="Crystal Courier level 4">
 
-## Inspector Tips
+## ลิงก์โครงการ
 
-- **Player**: Toggle `double_jump` to enable double jump. Adjust `move_speed`, `jump_force`, `shoot_cooldown_time`, and `bullet_lifetime` directly in the inspector.
-- **Enemy Spawner**: Configure `enemy_scenes`, `speed_range`, `respawn_time`, and `max_instance` to control enemy behavior and density.
-- **Bullet**: Adjust `speed` and `lifetime` to change projectile feel.
+- [Play Game](https://avocadough.github.io/GameLab4/)
+- [GitHub Project](https://github.com/Avocadough/GameLab4)
+- Demo VDO: อัปโหลดไฟล์ `Crystal_Courier_Demo_2min_final.avi` ไปยัง Google Drive หรือ YouTube แล้วเพิ่มลิงก์ที่นี่
 
-## Saving
+## สถานะขั้นตอน 10
 
-- Press the **Save** button in the top-right corner to save your progress.
-- The game saves the player's position, score, lives, and audio settings.
+- [x] บันทึกวิดีโอสาธิตประมาณ 2 นาที
+- [x] บันทึก `docs/demo1.jpg` และ `docs/demo2.jpg`
+- [x] Export เกมเป็น Web ที่ `docs/index.html`
+- [x] เตรียม Public GitHub Project และ GitHub Pages
+- [ ] อัปโหลด Demo VDO ไปยัง Google Drive หรือ YouTube และเพิ่มลิงก์ด้านบน
+- [ ] กรอกรหัสนักศึกษาและชื่อ-สกุลใน README กับหน้า Credits
 
 ## Credits
 
-**Original Developer**
-- [AdilDevStuff](https://github.com/AdilDevStuff) — [2D-Platformer-Starter-Kit](https://github.com/AdilDevStuff/2D-Platformer-Starter-Kit)
-
-**2D Assets**
-- [Kenney.nl](https://www.kenney.nl/)
-- [craftpix.net](https://craftpix.net/)
-- [Ravenmore](https://ravenmore.itch.io/)
-- [Icons8.com](https://icons8.com)
-
-**Sound Effects**
-- GDFXR (Sfxr plugin for Godot)
-
-**Modified for Educational Use By**
-- College of Computing, Khon Kaen University
+- Starter project: [computingkku/2D-Platformer-Starter-Kit](https://github.com/computingkku/2D-Platformer-Starter-Kit)
+- Original developer: [AdilDevStuff](https://github.com/AdilDevStuff/2D-Platformer-Starter-Kit)
+- Educational adaptation: College of Computing, Khon Kaen University
+- Starter assets credit: Kenney.nl, craftpix.net, Ravenmore, and Icons8.com
+- เพลง `crystal_route.wav`, เสียง `respawn.wav` และภาพ `crystal_bolt.svg` สร้างสำหรับโครงงานนี้

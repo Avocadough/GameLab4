@@ -1,12 +1,214 @@
-[gd_scene format=3 uid="uid://towe6jtciome"]
+[gd_scene format=4]
 
-[ext_resource type="PackedScene" uid="uid://bjntpxb1c8jxn" path="res://Scenes/Levels/base_level.tscn" id="1_8r7r2"]
-[ext_resource type="PackedScene" uid="uid://b46lxwc5r3dy4" path="res://Scenes/Levels/game_win.tscn" id="2_dcfph"]
+[ext_resource type="Script" path="res://Scenes/Levels/base_level.gd" id="1_attkd"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/level_finish_door.tscn" id="2_6jd25"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/level_finish_door.gd" id="3_lr23y"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/level_04.tscn" id="4_vps7a"]
+[ext_resource type="Texture2D" path="res://Assets/BG/cloudLayer1.png" id="5_8qv1x"]
+[ext_resource type="Texture2D" path="res://Assets/BG/mountainB.png" id="6_lcasu"]
+[ext_resource type="TileSet" path="res://Scenes/Prefabs/ground_tile_set.tres" id="7_1vcah"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/trap_1.tscn" id="8_wkp2v"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/trap_2.tscn" id="9_x43kv"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="10_plga2"]
+[ext_resource type="Script" path="res://Scenes/Actors/player.gd" id="11_03rg6"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/bullet.tscn" id="12_68v5s"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/coin.tscn" id="13_lvjrj"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/coin.gd" id="14_40tso"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/heal_potion.tscn" id="15_6adao"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/heal_potion.gd" id="16_xfsn8"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/monster_mushroom.tscn" id="17_l5akh"]
+[ext_resource type="Script" path="res://Scenes/Actors/monster_small.gd" id="18_d7ihf"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/monster_slim.tscn" id="19_x1c0p"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/game_ui.tscn" id="20_k1xo5"]
+[ext_resource type="Script" path="res://Scenes/Levels/game_ui.gd" id="21_275aq"]
+[ext_resource type="Theme" path="res://Scenes/Prefabs/theme.tres" id="22_mwcd1"]
+[ext_resource type="AudioStream" path="res://Assets/Sound/crystal_route.wav" id="23_t8tp1"]
 
-[node name="BaseLevel" unique_id=1997201631 instance=ExtResource("1_8r7r2")]
+[node name="Level03" type="Node2D" unique_id=1997201631]
+script = ExtResource("1_attkd")
 
-[node name="LevelFinishDoor" parent="." index="0" unique_id=1788542095]
-next_scene = ExtResource("2_dcfph")
+[node name="LevelFinishDoor" type="Area2D" parent="." unique_id=1788542095 instance=ExtResource("2_6jd25")]
+z_index = 1
+position = Vector2(2240, 496)
+collision_mask = 2
+script = ExtResource("3_lr23y")
+next_scene = ExtResource("4_vps7a")
 
-[node name="Label" parent="UserInterface" parent_id_path=PackedInt32Array(1799764374) index="1" unique_id=1103718868]
-text = "Level 3"
+[node name="Level" type="Node2D" parent="." unique_id=1752500785]
+
+[node name="Sky" type="Polygon2D" parent="Level" unique_id=226705930]
+z_index = -20
+color = Color(0.1882353, 0.12156863, 0.3137255, 1)
+polygon = PackedVector2Array(-1024, -1024, 4096, -1024, 4096, 1024, -1024, 1024)
+
+[node name="Background1" type="Parallax2D" parent="Level" unique_id=1072429833]
+z_index = -10
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Backdrop" type="Sprite2D" parent="Level/Background1" unique_id=1380667770]
+modulate = Color(0.72, 0.82, 1, 0.55)
+scale = Vector2(2, 2)
+texture = ExtResource("5_8qv1x")
+centered = false
+
+[node name="Background2" type="Parallax2D" parent="Level" unique_id=1070008654]
+z_index = -10
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1152, 0)
+repeat_times = 2
+
+[node name="Backdrop" type="Sprite2D" parent="Level/Background2" unique_id=134612008]
+modulate = Color(0.78, 0.88, 1, 0.72)
+scale = Vector2(2, 2)
+texture = ExtResource("6_lcasu")
+centered = false
+
+[node name="Ground" type="TileMapLayer" parent="Level" unique_id=1731488845]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD+/wkAAAAAAAEAAAD+/woAAAADAAEAAAD//wkAAAAAAAEAAAD//woAAAADAAEAAAAAAAkAAAAAAAEAAAAAAAoAAAADAAEAAAABAAkAAAAAAAEAAAABAAoAAAADAAEAAAACAAkAAAAAAAEAAAACAAoAAAADAAEAAAADAAkAAAAAAAEAAAADAAoAAAADAAEAAAAEAAkAAAAAAAEAAAAEAAoAAAADAAEAAAAFAAkAAAAAAAEAAAAFAAoAAAADAAEAAAAGAAkAAAAAAAEAAAAGAAoAAAADAAEAAAAHAAkAAAAAAAEAAAAHAAoAAAADAAEAAAAIAAkAAAAAAAEAAAAIAAoAAAADAAEAAAAJAAkAAAAAAAEAAAAJAAoAAAADAAEAAAAKAAkAAAAAAAEAAAAKAAoAAAADAAEAAAALAAkAAAAAAAEAAAALAAoAAAADAAEAAAAMAAkAAAAAAAEAAAAMAAoAAAADAAEAAAANAAkAAAAAAAEAAAANAAoAAAADAAEAAAAOAAkAAAAAAAEAAAAOAAoAAAADAAEAAAAPAAkAAAAAAAEAAAAPAAoAAAADAAEAAAAQAAkAAAAAAAEAAAAQAAoAAAADAAEAAAARAAkAAAAAAAEAAAARAAoAAAADAAEAAAASAAkAAAAAAAEAAAASAAoAAAADAAEAAAATAAkAAAAAAAEAAAATAAoAAAADAAEAAAAUAAkAAAAAAAEAAAAUAAoAAAADAAEAAAAVAAkAAAAAAAEAAAAVAAoAAAADAAEAAAAWAAkAAAAAAAEAAAAWAAoAAAADAAEAAAAXAAkAAAAAAAEAAAAXAAoAAAADAAEAAAAYAAkAAAAAAAEAAAAYAAoAAAADAAEAAAAZAAkAAAAAAAEAAAAZAAoAAAADAAEAAAAaAAkAAAAAAAEAAAAaAAoAAAADAAEAAAAbAAkAAAAAAAEAAAAbAAoAAAADAAEAAAAcAAkAAAAAAAEAAAAcAAoAAAADAAEAAAAdAAkAAAAAAAEAAAAdAAoAAAADAAEAAAAeAAkAAAAAAAEAAAAeAAoAAAADAAEAAAAfAAkAAAAAAAEAAAAfAAoAAAADAAEAAAAgAAkAAAAAAAEAAAAgAAoAAAADAAEAAAAhAAkAAAAAAAEAAAAhAAoAAAADAAEAAAAiAAkAAAAAAAEAAAAiAAoAAAADAAEAAAAjAAkAAAAAAAEAAAAjAAoAAAADAAEAAAAkAAkAAAAAAAEAAAAkAAoAAAADAAEAAAADAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAAFAAcAAAAAAAEAAAAGAAcAAAAAAAEAAAAJAAYAAAAAAAEAAAAKAAYAAAAAAAEAAAALAAYAAAAAAAEAAAAMAAYAAAAAAAEAAAAPAAUAAAAAAAEAAAAQAAUAAAAAAAEAAAARAAUAAAAAAAEAAAASAAUAAAAAAAEAAAAVAAYAAAAAAAEAAAAWAAYAAAAAAAEAAAAXAAYAAAAAAAEAAAAYAAYAAAAAAAEAAAAbAAUAAAAAAAEAAAAcAAUAAAAAAAEAAAAdAAUAAAAAAAEAAAAeAAUAAAAAAAEAAAAhAAcAAAAAAAEAAAAiAAcAAAAAAAEAAAAjAAcAAAAAAAEAAAA=")
+tile_set = ExtResource("7_1vcah")
+
+[node name="Trap01" type="StaticBody2D" parent="Level" unique_id=1930518021 groups=["Traps"] instance=ExtResource("8_wkp2v")]
+position = Vector2(448, 542)
+collision_layer = 9
+collision_mask = 2
+
+[node name="Trap02" type="Node2D" parent="Level" unique_id=1894763376 instance=ExtResource("9_x43kv")]
+position = Vector2(832, 336)
+
+[node name="Trap03" type="StaticBody2D" parent="Level" unique_id=1085577476 groups=["Traps"] instance=ExtResource("8_wkp2v")]
+position = Vector2(1344, 542)
+collision_layer = 9
+collision_mask = 2
+
+[node name="Trap04" type="Node2D" parent="Level" unique_id=1849259294 instance=ExtResource("9_x43kv")]
+position = Vector2(1792, 272)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=850213228 groups=["Player"] instance=ExtResource("10_plga2")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(128, 504)
+rotation = 0.00042652956
+collision_layer = 2
+script = ExtResource("11_03rg6")
+bullet_scene = ExtResource("12_68v5s")
+double_jump = true
+
+[node name="Coins" type="Node2D" parent="." unique_id=1530662565]
+z_index = 2
+
+[node name="Crystal01" type="Area2D" parent="Coins" unique_id=251510796 instance=ExtResource("13_lvjrj")]
+position = Vector2(256, 384)
+collision_mask = 3
+script = ExtResource("14_40tso")
+
+[node name="Crystal02" type="Area2D" parent="Coins" unique_id=1685558066 instance=ExtResource("13_lvjrj")]
+position = Vector2(576, 320)
+collision_mask = 3
+script = ExtResource("14_40tso")
+
+[node name="Crystal03" type="Area2D" parent="Coins" unique_id=596997517 instance=ExtResource("13_lvjrj")]
+position = Vector2(704, 320)
+collision_mask = 3
+script = ExtResource("14_40tso")
+
+[node name="Crystal04" type="Area2D" parent="Coins" unique_id=1658208541 instance=ExtResource("13_lvjrj")]
+position = Vector2(1024, 256)
+collision_mask = 3
+script = ExtResource("14_40tso")
+
+[node name="Crystal05" type="Area2D" parent="Coins" unique_id=1580554207 instance=ExtResource("13_lvjrj")]
+position = Vector2(1472, 320)
+collision_mask = 3
+script = ExtResource("14_40tso")
+
+[node name="Crystal06" type="Area2D" parent="Coins" unique_id=177841229 instance=ExtResource("13_lvjrj")]
+position = Vector2(1856, 256)
+collision_mask = 3
+script = ExtResource("14_40tso")
+
+[node name="Crystal07" type="Area2D" parent="Coins" unique_id=1300716241 instance=ExtResource("13_lvjrj")]
+position = Vector2(2176, 384)
+collision_mask = 3
+script = ExtResource("14_40tso")
+
+[node name="HealPotion01" type="Area2D" parent="Coins" unique_id=242563240 instance=ExtResource("15_6adao")]
+position = Vector2(1216, 472)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("16_xfsn8")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1580630701]
+
+[node name="Monster01" type="CharacterBody2D" parent="Enemies" unique_id=600502477 groups=["Enemy"] instance=ExtResource("17_l5akh")]
+position = Vector2(640, 534)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("18_d7ihf")
+speed = 80.0
+
+[node name="Monster02" type="CharacterBody2D" parent="Enemies" unique_id=939822054 groups=["Enemy"] instance=ExtResource("19_x1c0p")]
+position = Vector2(1088, 534)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("18_d7ihf")
+speed = 85.0
+direction = -1
+
+[node name="Monster03" type="CharacterBody2D" parent="Enemies" unique_id=325213703 groups=["Enemy"] instance=ExtResource("17_l5akh")]
+position = Vector2(1536, 534)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("18_d7ihf")
+speed = 90.0
+
+[node name="Monster04" type="CharacterBody2D" parent="Enemies" unique_id=1805832568 groups=["Enemy"] instance=ExtResource("19_x1c0p")]
+position = Vector2(2048, 534)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("18_d7ihf")
+speed = 90.0
+direction = -1
+
+[node name="UserInterface" type="CanvasLayer" parent="." unique_id=1799764374 instance=ExtResource("20_k1xo5")]
+script = ExtResource("21_275aq")
+
+[node name="Label" type="Label" parent="UserInterface" unique_id=1103718868]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -11.5
+offset_right = 27.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("22_mwcd1")
+theme_override_font_sizes/font_size = 60
+text = "LEVEL 3  •  CRYSTAL CAVERNS"
+metadata/_edit_lock_ = true
+
+[node name="Text" type="Node2D" parent="." unique_id=416249055]
+
+[node name="LevelHint" type="Label" parent="Text" unique_id=1440443966]
+offset_left = -430.0
+offset_top = 360.0
+offset_right = 650.0
+offset_bottom = 450.0
+theme = ExtResource("22_mwcd1")
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.91764706, 0.972549, 1, 1)
+theme_override_constants/outline_size = 6
+text = "Use the high ledges to avoid the crowded cavern floor."
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=724032201]
+stream = ExtResource("23_t8tp1")
+bus = &"music"
+
+[connection signal="hit_enemy" from="Player" to="." method="_on_player_hit_enemy"]
+[connection signal="hit_trap" from="Player" to="." method="_on_player_hit_trap"]
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

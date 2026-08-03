@@ -1,95 +1,102 @@
-[gd_scene format=3 uid="uid://bajrtxxftc6wt"]
+[gd_scene load_steps=5 format=3 uid="uid://bajrtxxftc6wt"]
 
-[ext_resource type="Theme" uid="uid://d3eng5cvycmjf" path="res://Scenes/Prefabs/theme.tres" id="1_2g1tp"]
-[ext_resource type="Texture2D" uid="uid://1ay25i0wdihg" path="res://Assets/Icons/cpkku_dark.png" id="2_fnvqj"]
-[ext_resource type="PackedScene" uid="uid://puc4l62gx6et" path="res://Scenes/Prefabs/button_exit.tscn" id="3_fnvqj"]
+[ext_resource type="Theme" uid="uid://d3eng5cvycmjf" path="res://Scenes/Prefabs/theme.tres" id="1_theme"]
+[ext_resource type="Texture2D" uid="uid://1ay25i0wdihg" path="res://Assets/Icons/cpkku_dark.png" id="2_logo"]
+[ext_resource type="PackedScene" uid="uid://puc4l62gx6et" path="res://Scenes/Prefabs/button_exit.tscn" id="3_back"]
+[ext_resource type="Texture2D" uid="uid://piisp82qy5kj" path="res://Assets/Spritesheet/GemYellow.png" id="4_gem"]
 
-[node name="Node2D" type="Node2D" unique_id=264957255]
+[node name="Credits" type="Node2D"]
 
-[node name="Control" type="Control" parent="." unique_id=423201679]
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.0352941, 0.0823529, 0.164706, 1)
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1154.0
-offset_bottom = 650.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("1_theme")
 
-[node name="CpkkuDark" type="Sprite2D" parent="Control" unique_id=813724852]
-position = Vector2(584, 71)
-texture = ExtResource("2_fnvqj")
+[node name="CpkkuDark" type="Sprite2D" parent="Control"]
+position = Vector2(576, 70)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_logo")
 
-[node name="Title" type="Label" parent="Control" unique_id=1640205557]
+[node name="GemLeft" type="Sprite2D" parent="Control"]
+position = Vector2(238, 314)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_gem")
+
+[node name="GemRight" type="Sprite2D" parent="Control"]
+position = Vector2(914, 314)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_gem")
+
+[node name="Title" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -148.0
-offset_top = 295.0
-offset_right = 153.0
-offset_bottom = 327.0
+offset_left = -400.0
+offset_top = 128.0
+offset_right = 400.0
+offset_bottom = 184.0
 grow_horizontal = 2
-theme = ExtResource("1_2g1tp")
-theme_override_colors/font_color = Color(0.88235295, 0.18039216, 0.1882353, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
+theme_override_colors/font_color = Color(0.431373, 0.94902, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 38
+text = "CRYSTAL COURIER: SKYLINE RUN"
+horizontal_alignment = 1
+
+[node name="Course" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -420.0
+offset_top = 194.0
+offset_right = 420.0
+offset_bottom = 246.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "Computer Game Development • Exercise 4 • Academic Year 2026"
+horizontal_alignment = 1
+
+[node name="Student" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 270.0
+offset_right = 340.0
+offset_bottom = 394.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.913725, 0.407843, 1)
 theme_override_font_sizes/font_size = 24
-text = "Development Team"
+text = "STUDENT PROJECT\nStudent ID: ____________________\nName: _________________________"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Title2" type="Label" parent="Control" unique_id=1645896659]
+[node name="Story" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -167.0
-offset_top = 177.0
-offset_right = 207.0
-offset_bottom = 209.0
+offset_left = -430.0
+offset_top = 416.0
+offset_right = 430.0
+offset_bottom = 516.0
 grow_horizontal = 2
-theme = ExtResource("1_2g1tp")
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 16
-text = "At College of Computing, Khon Kaen University
-By  Asst.Dr. Wachirawut Thamviset"
+theme_override_colors/font_color = Color(0.85098, 0.929412, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Story: A young courier must recover seven lost sky crystals in each district,\ndefeat corrupted creatures, and reopen the portal above the city.\nStarter kit and educational assets credited in README.md."
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="btnExit" parent="Control" unique_id=1633606001 instance=ExtResource("3_fnvqj")]
-layout_mode = 0
-offset_left = 33.0
-offset_right = 159.0
-
-[node name="Title3" type="Label" parent="Control" unique_id=1657901293]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -148.0
-offset_top = 129.0
-offset_right = 153.0
-offset_bottom = 161.0
-grow_horizontal = 2
-theme = ExtResource("1_2g1tp")
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 24
-text = "Computer Game Development  Course 2026   "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Title4" type="Label" parent="Control" unique_id=2127691335]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -187.0
-offset_top = 360.0
-offset_right = 193.0
-offset_bottom = 407.0
-grow_horizontal = 2
-theme = ExtResource("1_2g1tp")
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 16
-text = "1. 
-2.
-3.
-4."
-vertical_alignment = 1
+[node name="btnExit" parent="Control" instance=ExtResource("3_back")]
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 160.0
+offset_bottom = 88.0

@@ -26,6 +26,7 @@ rotation = 0.00042652956
 collision_layer = 2
 script = ExtResource("1_mqoqv")
 bullet_scene = ExtResource("2_4fuvf")
+double_jump = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1840880435]
 position = Vector2(2.08165e-12, -33)

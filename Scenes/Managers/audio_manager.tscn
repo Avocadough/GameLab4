@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://d2yw2hs5pd8cm" path="res://Assets/Sound/FX/coin_pickup.wav" id="3_qes3j"]
 [ext_resource type="AudioStream" uid="uid://b5gyns7mtiq0d" path="res://Assets/Sound/FX/hurt.wav" id="4_84782"]
 [ext_resource type="AudioStream" uid="uid://cbquowt7cd3d6" path="res://Assets/Sound/FX/level_complete.wav" id="5_84782"]
+[ext_resource type="AudioStream" path="res://Assets/Sound/FX/respawn.wav" id="6_respawn"]
 
 [node name="AudioManager" type="Node" unique_id=1179160635]
 script = ExtResource("1_hp1cr")
@@ -24,6 +25,7 @@ volume_db = -3.0
 bus = &"sfx"
 
 [node name="RespawnSfx" type="AudioStreamPlayer" parent="." unique_id=179996886]
+stream = ExtResource("6_respawn")
 bus = &"sfx"
 
 [node name="LevelCompleteSfx" type="AudioStreamPlayer" parent="." unique_id=1672470775]
