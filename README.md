@@ -1,5 +1,28 @@
 # Crystal Courier: Skyline Run
 
+A four-level 2D side-scrolling platform game built with Godot for Computer Game Development Exercise 4.
+
+[Play the browser demo](https://avocadough.github.io/GameLab4/) · [Watch the demo video](https://drive.google.com/file/d/1y0j4NmCZlMkzGWsjxtM-FRXcVsComBfU/view?usp=sharing)
+
+Collect crystals, avoid traps and enemies, and open the exit to advance. Use **A/D or the arrow keys** to move, **Space/W/Up** to jump and double-jump, and **X** to fire; touch controls are also provided.
+
+## Open and explore
+
+Import [project.godot](project.godot) in Godot 4.7.1 or newer and press **F5**.
+
+| Path | Contents |
+| --- | --- |
+| [Scenes/Levels/](Scenes/Levels/) | The four levels and menu scenes |
+| [Scenes/Actors/](Scenes/Actors/), [Scenes/Prefabs/](Scenes/Prefabs/) | Player, enemies and reusable game objects |
+| [Assets/](Assets/), [scripts/](scripts/) | Art/audio assets and development scripts |
+| [docs/](docs/) | Browser export and screenshots |
+
+The student information, screenshots, exercise links and starter-kit credits are preserved below.
+
+---
+
+## รายละเอียดแบบฝึกหัด (ภาษาไทย)
+
 แบบฝึกหัดที่ 4 วิชา Computer Game Development: เกม 2D Platform Side-Scrolling ที่สร้างด้วย Godot 4.7
 
 ## ข้อมูลนักศึกษา
